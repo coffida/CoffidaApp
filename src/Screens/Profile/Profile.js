@@ -30,7 +30,7 @@ class Profile extends Component {
 
   // Get User Information Endpoint
   get_profile_data = async (GetProfileUserData) => {
-    const response = await fetch('http://10.0.2.2:3333/api/1/1.0.0/user/' + GetProfileUserData, {
+    const response = await fetch('http://10.0.2.2:3333/api/1.0.0/user/' + GetProfileUserData, {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ class Profile extends Component {
 
     console.log(to_send, this.state.user_id_val);
 
-    return fetch("http://10.0.2.2:3333/api/1/1.0.0/user/" + this.state.user_id_val, {
+    return fetch("http://10.0.2.2:3333/api/1.0.0/user/" + this.state.user_id_val, {
       method: 'patch',
       headers: {
         'Content-Type': 'application/json'
