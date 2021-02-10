@@ -1,6 +1,7 @@
 import {
     USER_LOGIN,
     RESET_STORE,
+    USER_LOGOUT,
     USER_REGISTER,
     GET_USER_DETAILS,
     UPDATE_PROFILE,
@@ -8,6 +9,7 @@ import {
 
 import axios from '../../constants/axios';
 import EndPoints from '../../constants/config';
+import {AsyncStorage} from 'react-native';
 
 // Login endpoint with POST method
 export const loginUser = (userData) => {
@@ -73,72 +75,14 @@ export const register_user = (registerUserData) => {
     };
 };
 
-//Logout
+//Logout Endpoint
 export const logout_user = () => {
-    return (dispatch) => {
-        return dispatch({
-            type: RESET_STORE,
-        });
-    };
-};
-
-// Get Profile
-export const get_user_profile = (GetProfileUserData) => {
-    console.log("get_user_profile -> userData", GetProfileUserData)
-    return async(dispatch, getState) => {
+    return async(dispatch) => {
         try {
             const response = await axios.post(
-                EndPoints.GET_USER_INFO, 
-                {
-                    GetProfileUserData
-                },
+                EndPoints.LOGOUT
             );
-            console.log("get_user_profile -> response", response)
-            const apiResponse = await response.data;
-            console.log("get_user_profile -> apiResponse", apiResponse)
-            if (apiResponse.user_id) {
-                dispatch({
-                    type: GET_USER_DETAILS,
-                    payload: {
-                        GetProfileUserData: apiResponse,
-                    },
-                });
-                return Promise.resolve(apiResponse);
-            } else {
-                return Promise.reject(apiResponse);
-            }
-        } catch (e) {
-            Promise.reject(e);
-            console.log(e);
-        }
-    };
-};
-
-// Update Profile
-export const update_user_profile = (ProfileUserData) => {
-    console.log("update_user_profile -> userData", ProfileUserData)
-    return async(dispatch, getState) => {
-        try {
-            const response = await axios.put(
-                EndPoints.UPDATE_USER_INFO, 
-                {
-                    ProfileUserData
-                },
-            );
-            console.log("update_user_profile -> response", response)
-            const apiResponse = await response.data;
-            console.log("update_user_profile -> apiResponse", apiResponse)
-            if (apiResponse.user_id) {
-                dispatch({
-                    type: UPDATE_PROFILE,
-                    payload: {
-                        ProfileUserData: apiResponse,
-                    },
-                });
-                return Promise.resolve(apiResponse);
-            } else {
-                return Promise.reject(apiResponse);
-            }
+            console.log("logout_user -> response", response);
         } catch (e) {
             Promise.reject(e);
             console.log(e);
