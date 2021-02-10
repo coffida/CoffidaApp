@@ -1,0 +1,7 @@
+export const RESET_STORE = "RESET_STORE";
+
+export const USER_LOGIN = "USER_LOGIN";
+export const USER_REGISTER = "USER_REGISTER";
+export const USER_LOGOUT = "USER_LOGOUT";
+export const GET_USER_DETAILS = "GET_USER_DETAILS";
+export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
