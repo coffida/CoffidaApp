@@ -1,6 +1,6 @@
 const _Environments = {
     development: {
-        BASE_URL: 'https://virtserver.swaggerhub.com/zedrem/CoffiDa/1.0.0/',
+        BASE_URL: 'http://10.0.2.2:3333/api/1/1.0.0/',
 
         REGISTER: 'user',
         LOGIN: 'user/login',
